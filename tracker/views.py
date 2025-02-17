@@ -37,7 +37,11 @@ def index(request):
         else:
             expense += tracking_history.amount
     #Track Transaction history 
-    context = {'income':income,'expense':expense,'transactions': TrackingHistory.objects.all(),'current_balance': current_balance}
+    context = {'income':income,
+               'expense':expense,
+               'transactions': TrackingHistory.objects.all(),
+               'current_balance': current_balance}
+    
     return render(request,'index.html',context)
 
 
