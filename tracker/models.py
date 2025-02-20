@@ -1,7 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User 
 
 # Create your models here.
-
 
 class CurrentBalance(models.Model):
     current_balance = models.FloatField(default=0)
@@ -21,3 +21,11 @@ class TrackingHistory(models.Model):
 #By adding this.., this can be seen in admin  
     def __str__(self):
         return f"The amount is {self.amount} for {self.description}"
+    
+
+class RequestLogs(models.Model):
+    request_info = models.TextField()
+    request_type = models.CharField(max_length=100)
+    request_method = models.CharField(max_length=100)
+
+    created_at = models.DateTimeField(auto_now_add=True)
