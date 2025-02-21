@@ -3,7 +3,11 @@
 {% block start %}
 
     <h1>Expense Tracker</h1>
-    <div class="container">
+    <a class = "btn" style="background-color:brown; width: 100px;" href="{% url 'login_view' %}" >Logout<a>
+    
+    {{request.user.username}} <br>
+    {{request.user.first_name}}
+      <div class="container">
       <div class="header">
         <img
           src="https://i.ibb.co/jfScDTC/budget.png"

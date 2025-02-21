@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tracker',
+    'accounts'
    ]
+
+AUTH_USER_MODEL = 'accounts.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -87,7 +90,7 @@ DATABASES = {
 DATABASES = {
 	'default': {
 		'ENGINE': 'django.db.backends.mysql',
-		'NAME': 'expense',
+		'NAME': 'new_db',
 		'USER': 'root',
 		'PASSWORD': 'bharath006',
 		'HOST':'127.0.0.1',
@@ -113,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+LOGIN_URL = '/login'
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 

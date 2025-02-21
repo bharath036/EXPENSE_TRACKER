@@ -3,7 +3,8 @@ from django.contrib import messages
 from django.db.models import Sum
 from .models import TrackingHistory,CurrentBalance
 from django.contrib.auth.models import User 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout 
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 #login function 
@@ -23,6 +24,7 @@ def login_view(request):
         user = authenticate(username=username, password = password)
         if not user:
             messages.success(request,"Incorrect password")
+            return redirect('login/')
         login(request,user)
         return redirect('/')
     return render(request,'login.html')
@@ -50,6 +52,12 @@ def register_view(request):
         return redirect('/register')
     return render(request,'register.html')
 
+
+def logout_view(request):
+    logout(request)
+    return redirect('/login')
+
+@login_required(login_url="login_view")
 def index(request):
     if request.method=="POST":
         description = request.POST.get('description')
